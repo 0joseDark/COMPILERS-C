@@ -158,4 +158,183 @@ Depois de instalar qualquer compilador, adiciona-o ao **PATH do sistema**:
 | Cygwin      | C/C++      | Ambiente Linux em Windows   | `.exe` + `cygwin1.dll` |
 | Intel (ICX) | C/C++      | Otimização para CPUs Intel  | `.exe` (otimizado)     |
 
+
 ---
+
+## 🛠️ COMPILADORES C# PARA WINDOWS 10
+
+---
+
+### 1. **.NET SDK / .NET CLI (Microsoft Oficial)**
+
+#### ✅ Suporta: C\#
+
+#### 📌 Ferramenta oficial da Microsoft, moderna, leve e usada em produção.
+
+---
+
+#### 📥 Instalação:
+
+* Vai a: [https://dotnet.microsoft.com/download](https://dotnet.microsoft.com/download)
+* Escolhe a versão mais recente do **.NET SDK (não só o runtime)**.
+* Verifica no terminal:
+
+```bash
+dotnet --version
+```
+
+---
+
+#### ⚙️ Compilar (modo simples):
+
+```bash
+# Cria um novo projeto (opcional):
+dotnet new console -n MeuApp
+cd MeuApp
+
+# Compila:
+dotnet build
+
+# Corre:
+dotnet run
+```
+
+#### ⚙️ Compilar diretamente um ficheiro .cs (sem projeto):
+
+```bash
+dotnet new console -n Compilador
+cd Compilador
+# Copia o ficheiro .cs para esta pasta
+dotnet run
+```
+
+---
+
+#### 📋 Observações:
+
+* Leve, multiplataforma (Windows, Linux, Mac).
+* Não precisa de Visual Studio.
+* Usa o novo compilador **Roslyn**.
+
+---
+
+### 2. **Mono (Antigo e ainda útil)**
+
+#### ✅ Suporta: C\#
+
+#### 📌 Compilador C# multiplataforma antes do .NET Core.
+
+---
+
+#### 📥 Instalação:
+
+* Site: [https://www.mono-project.com/download/stable/](https://www.mono-project.com/download/stable/)
+* Depois de instalar, abre o terminal (CMD ou PowerShell).
+
+#### ⚙️ Compilar:
+
+```bash
+mcs programa.cs -out:programa.exe
+```
+
+#### ⚙️ Executar:
+
+```bash
+mono programa.exe
+```
+
+---
+
+#### 📋 Observações:
+
+* Ainda usado em jogos com Unity ou em projetos antigos.
+* Pode correr binários do .NET Framework.
+
+---
+
+### 3. **CS-Script**
+
+#### ✅ Suporta: C\#
+
+#### 📌 Ferramenta leve para correr scripts C# como se fossem Python.
+
+---
+
+#### 📥 Instalação:
+
+* Site: [https://github.com/oleg-shilo/cs-script.core](https://github.com/oleg-shilo/cs-script.core)
+* Ou instala com o .NET:
+
+```bash
+dotnet tool install -g dotnet-script
+```
+
+#### ⚙️ Executar um script C#:
+
+```bash
+dotnet script programa.csx
+```
+
+---
+
+#### 📋 Observações:
+
+* Útil para scripts rápidos em C#.
+* Pode usar bibliotecas .NET no script.
+
+---
+
+### 4. **Compilação via Roslyn (C# Compiler Platform)**
+
+#### ✅ Suporta: C\#
+
+#### 📌 Roslyn é o compilador usado pelo próprio .NET CLI.
+
+#### ⚙️ Também pode ser usado como biblioteca para criar compiladores, IDEs, etc.
+
+---
+
+## ✅ RESUMO COMPARATIVO
+
+| Compilador/Ferramenta | Requisitos    | Tipo de Projeto       | Execução        | Observações            |
+| --------------------- | ------------- | --------------------- | --------------- | ---------------------- |
+| .NET CLI (`dotnet`)   | Instalar SDK  | App, biblioteca, etc. | `dotnet run`    | Moderno e oficial      |
+| Mono (`mcs`)          | Instalar Mono | Simples e leve        | `mono prog.exe` | Antigo, mas compatível |
+| dotnet-script         | .NET SDK      | Scripts `.csx`        | `dotnet script` | Executa C# como Python |
+
+---
+
+## 🧪 Exemplo: Programa "Olá Mundo" em C\#
+
+### 🔹 `ola.cs`
+
+```csharp
+using System;
+
+class Programa
+{
+    static void Main()
+    {
+        Console.WriteLine("Olá Mundo!");
+    }
+}
+```
+
+### 🔹 Compilar com `.NET CLI`:
+
+```bash
+dotnet new console -n OlaMundo
+cd OlaMundo
+# Substitui o ficheiro `Program.cs` pelo `ola.cs`
+dotnet run
+```
+
+### 🔹 Compilar com `Mono`:
+
+```bash
+mcs ola.cs -out:ola.exe
+ola.exe
+```
+
+---
+
