@@ -338,3 +338,175 @@ ola.exe
 
 ---
 
+## 🧾 O que é o Mono?
+
+**Mono** é uma implementação **livre e open source** do **.NET Framework**, criada originalmente para Linux, mas funciona também no **Windows, macOS e Android**.
+
+🔹 Permite compilar e correr programas C# com o compilador `mcs` (Mono C# compiler) ou `csc` (Roslyn, opcional).
+
+---
+
+## ✅ Vantagens
+
+* Leve e fácil de instalar.
+* Não requer Visual Studio.
+* Útil para scripts, testes, aprendizagem, e até jogos Unity.
+* Compatível com `.NET Framework` e muitos projetos C# existentes.
+
+---
+
+## 🧰 Instalação do Mono no Windows 10
+
+### 1. 🔽 Download e instalação
+
+1. Vai ao site oficial:
+   👉 [https://www.mono-project.com/download/stable/](https://www.mono-project.com/download/stable/)
+
+2. Clica em **Windows**, depois em **Download Mono for Windows**.
+
+3. Executa o instalador `.msi` e segue os passos.
+   Confirma que o Mono está instalado em algo como:
+
+   ```
+   C:\Program Files\Mono\
+   ```
+
+---
+
+### 2. 🛠️ Configurar o PATH (se necessário)
+
+Para poderes usar `mcs` no terminal (cmd ou PowerShell):
+
+1. Abre o **Painel de Controlo > Sistema > Avançadas > Variáveis de Ambiente**.
+
+2. Em **Path**, adiciona:
+
+   ```
+   C:\Program Files\Mono\bin
+   ```
+
+3. Fecha e reabre o terminal.
+
+---
+
+### 3. 📋 Verifica se o Mono está instalado corretamente
+
+```bash
+mcs --version
+mono --version
+```
+
+---
+
+## 🧪 Criar e Compilar um Programa com Mono
+
+### 1. ✍️ Escreve o programa
+
+Cria um ficheiro chamado `ola.cs` com este conteúdo:
+
+```csharp
+using System;
+
+class Programa
+{
+    static void Main()
+    {
+        Console.WriteLine("Olá, Mundo!");
+    }
+}
+```
+
+Grava o ficheiro como `ola.cs` (podes usar Notepad, Notepad++, ou outro editor).
+
+---
+
+### 2. ⚙️ Compilar com `mcs`
+
+Abre o terminal (CMD ou PowerShell) na pasta onde está o ficheiro e escreve:
+
+```bash
+mcs ola.cs -out:ola.exe
+```
+
+Se não aparecer nenhum erro, ele cria o ficheiro `ola.exe`.
+
+---
+
+### 3. ▶️ Executar o programa compilado
+
+```bash
+mono ola.exe
+```
+
+📌 Mesmo em Windows, o Mono pode precisar do `mono` para correr os ficheiros `.exe` criados por `mcs`.
+
+---
+
+## 🧠 Explicação dos comandos
+
+| Comando                   | Explicação                                 |
+| ------------------------- | ------------------------------------------ |
+| `mcs ola.cs -out:ola.exe` | Compila `ola.cs` e gera `ola.exe`          |
+| `mono ola.exe`            | Executa o ficheiro compilado usando o Mono |
+
+---
+
+## 💡 Exemplo com entrada do utilizador
+
+```csharp
+using System;
+
+class Saudacao
+{
+    static void Main()
+    {
+        Console.Write("Qual é o teu nome? ");
+        string nome = Console.ReadLine();
+        Console.WriteLine("Olá, " + nome + "!");
+    }
+}
+```
+
+Grava como `nome.cs`, depois:
+
+```bash
+mcs nome.cs -out:nome.exe
+mono nome.exe
+```
+
+---
+
+## 🧰 Outros parâmetros úteis do `mcs`
+
+| Opção                     | Descrição                              |
+| ------------------------- | -------------------------------------- |
+| `-out:nome.exe`           | Define o nome do executável            |
+| `-target:library`         | Compila uma biblioteca `.dll`          |
+| `-reference:ficheiro.dll` | Usa outra biblioteca externa           |
+| `-debug`                  | Inclui informação de depuração (debug) |
+
+---
+
+## 📦 Compilar múltiplos ficheiros
+
+Se o programa tiver vários `.cs`:
+
+```bash
+mcs main.cs outro.cs -out:programa.exe
+mono programa.exe
+```
+
+---
+
+## ✅ Resumo final
+
+| Etapa     | Comando                            |
+| --------- | ---------------------------------- |
+| Instalar  | Baixar do site mono-project.com    |
+| Verificar | `mono --version` / `mcs --version` |
+| Compilar  | `mcs ola.cs -out:ola.exe`          |
+| Executar  | `mono ola.exe`                     |
+
+---
+
+
