@@ -1,5 +1,3 @@
----
-
 ## 📄 O que é um ficheiro `.cs`?
 
 * Um ficheiro com extensão **`.cs`** é um **ficheiro de código-fonte escrito em C#** (C Sharp), uma linguagem de programação criada pela Microsoft.
