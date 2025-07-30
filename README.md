@@ -509,4 +509,137 @@ mono programa.exe
 
 ---
 
+## 🧾 O que é `mcs`?
+
+* `mcs` significa **Mono C# Compiler**.
+* É usado para **compilar ficheiros `.cs` (C#)** em ficheiros `.exe` (executáveis) ou `.dll` (bibliotecas).
+* Funciona na **linha de comandos** (cmd, PowerShell, Terminal).
+
+---
+
+## 📜 Sintaxe básica
+
+```bash
+mcs [opções] ficheiro1.cs ficheiro2.cs ... -out:nome.exe
+```
+
+---
+
+## ✅ Comandos e Opções mais usados
+
+| Comando                     | Descrição                                              |          |                                       |
+| --------------------------- | ------------------------------------------------------ | -------- | ------------------------------------- |
+| `mcs ficheiro.cs`           | Compila um ficheiro `.cs` para `.exe` com o mesmo nome |          |                                       |
+| `-out:nome.exe`             | Define o nome do executável a gerar                    |          |                                       |
+| `-target:exe`               | Gera um executável (por defeito)                       |          |                                       |
+| `-target:library`           | Gera uma biblioteca `.dll`                             |          |                                       |
+| `-reference:nome.dll`       | Liga o programa a uma biblioteca externa               |          |                                       |
+| `-r:nome.dll`               | Versão abreviada de `-reference`                       |          |                                       |
+| `-recurse:*.cs`             | Compila todos os ficheiros `.cs` da pasta              |          |                                       |
+| `-define:NOME`              | Define uma constante de pré-processador                |          |                                       |
+| `-main:Classe.Main`         | Define qual a classe contém o `Main()` principal       |          |                                       |
+| `-debug`                    | Gera símbolos de debug (útil para testes)              |          |                                       |
+| `-warnaserror`              | Trata avisos como erros (para código mais limpo)       |          |                                       |
+| `-unsafe`                   | Permite código "unsafe" (ponteiros)                    |          |                                       |
+| `-optimize+` / `-optimize-` | Ativa/desativa optimizações de compilação              |          |                                       |
+| \`-platform\:x86            | x64                                                    | anycpu\` | Define a plataforma alvo do compilado |
+| `-nologo`                   | Oculta a mensagem do compilador                        |          |                                       |
+| `-help`                     | Mostra ajuda completa de `mcs`                         |          |                                       |
+
+---
+
+## 🧪 Exemplos práticos
+
+### 1. Compilar um programa simples
+
+```bash
+mcs ola.cs
+```
+
+Gera `ola.exe`.
+
+---
+
+### 2. Definir nome de saída
+
+```bash
+mcs ola.cs -out:minhaApp.exe
+```
+
+---
+
+### 3. Compilar vários ficheiros
+
+```bash
+mcs main.cs menu.cs util.cs -out:programa.exe
+```
+
+---
+
+### 4. Compilar todos os ficheiros `.cs` da pasta
+
+```bash
+mcs -recurse:*.cs -out:programa.exe
+```
+
+---
+
+### 5. Compilar uma biblioteca (.dll)
+
+```bash
+mcs -target:library biblioteca.cs -out:minhaLib.dll
+```
+
+---
+
+### 6. Usar uma biblioteca externa
+
+```bash
+mcs programa.cs -r:minhaLib.dll -out:programa.exe
+```
+
+---
+
+### 7. Compilar com debug e sem optimizações
+
+```bash
+mcs programa.cs -debug -optimize-
+```
+
+---
+
+### 8. Definir a classe `Main` (quando há mais que uma)
+
+```bash
+mcs *.cs -main:ClassePrincipal
+```
+
+---
+
+## 🎯 Dica: ver todas as opções disponíveis
+
+```bash
+mcs -help
+```
+
+Isso mostra todas as opções suportadas com explicações rápidas.
+
+---
+
+## ✅ Resumo útil
+
+| Objetivo                | Comando exemplo                           |
+| ----------------------- | ----------------------------------------- |
+| Compilar 1 ficheiro     | `mcs ola.cs`                              |
+| Nome de saída           | `mcs ola.cs -out:app.exe`                 |
+| Compilar todos os `.cs` | `mcs -recurse:*.cs -out:app.exe`          |
+| Criar biblioteca `.dll` | `mcs -target:library lib.cs -out:lib.dll` |
+| Usar biblioteca externa | `mcs app.cs -r:lib.dll -out:app.exe`      |
+| Ativar debug            | `mcs app.cs -debug`                       |
+| Forçar código limpo     | `mcs app.cs -warnaserror`                 |
+| Ver ajuda completa      | `mcs -help`                               |
+
+---
+
+
 
