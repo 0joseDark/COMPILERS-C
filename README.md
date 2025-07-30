@@ -1,5 +1,3 @@
----
-
 ## 🔧 COMPILADORES C/C++ PARA WINDOWS 10
 
 ### 1. **MinGW (Minimalist GNU for Windows)**
